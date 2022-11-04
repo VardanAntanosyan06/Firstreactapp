@@ -1,0 +1,12 @@
+#myDiv {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.items {
+  padding: 10px;
+  margin-left: 20px;
+  border-radius: 20px;
+  border: double;
+  display: flex;
+}
