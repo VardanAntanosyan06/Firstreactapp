@@ -15,7 +15,6 @@ const Login = () => {
         <div class="form-field">
           <input type="password" placeholder="Password" required />{" "}
         </div>
-
         <div class="form-field">
          <Link to="admin" >
          <button class="btn">
