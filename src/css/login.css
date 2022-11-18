@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:400,700");
+@import url("https://fonts.googleapis.com/css?family=Sofia");
+
+
 #bg {
   background-image: url("./particle-bg-removebg-preview-removebg-preview.png");
   position: fixed;
@@ -101,3 +104,53 @@ form .btn {
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
   font-size: 17px;
 }
+
+.disabled{
+  outline: none;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 auto;
+  padding: 0.9rem 2.5rem;
+  text-align: center;
+  background-color: #666666;
+  color: #fff;
+  border-radius: 4px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  font-size: 17px
+}
+
+.showbtn{
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 315px;
+  background: none;
+  border:none;
+}
+
+
+.waviy {
+  height: 50px;
+  position: relative;
+  top:-20px;
+  font-size: 40px;
+  font-family: "Sofia", sans-serif;
+  text-align: center;
+}
+
+.waviy span {
+  letter-spacing: 10px;
+  position: relative;
+  display: inline-block;
+  color:rgb(50, 230, 50);
+  text-transform: uppercase;
+  animation: waviy 5s infinite;
+}
+@keyframes waviy {
+  0%,40%,100% {
+    transform: translateY(0)
+  }
+  20% {
+    transform: translateY(-20px)
+}}

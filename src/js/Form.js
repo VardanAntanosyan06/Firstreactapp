@@ -25,13 +25,13 @@ export default class Form extends Component {
         <h1>{this.state.lastName}</h1>
         <input  type="text" defaultValue = {this.state.lastName}  onChange={(event)=>this.setState({lastName:event.target.value,border:"8px solid rgb(0, 195, 255)"})}/>
         <h1>{this.state.age}</h1>
-        <label for="quantity">Quantity (between 10 and 50):</label>
+        <label forHtml="quantity">Quantity (between 10 and 50):</label>
         <input type="number" min="10" max="50" onChange={(event)=>this.setState({age:event.target.value,border:"8px solid rgb(0, 195, 255)"})} />
         <h1>{this.state.role}</h1>
         <input type="radio" name="role" value="admin"  onChange={event=>this.setState({role:event.target.value,border:"8px solid rgb(0, 195, 255)"})}/>
-        <label for="admin">admin</label>
+        <label forHtml="admin">admin</label>
         <input type="radio" name="role" value="worker" onChange={event=>this.setState({role:event.target.value,border:"8px solid rgb(0, 195, 255)"})}/>
-        <label for="worker">worker</label> <br />
+        <label forHtml="worker">worker</label> <br />
         <input type="submit" id="submit"/>
       </form>
       </div>
