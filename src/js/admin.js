@@ -4,20 +4,21 @@ import "../css/admin.css";
 import axios from "axios";
 
 import Animation from "./Animation";
+import GetTasks from "./getTask";
 
 const AxiosConnect = (props) => {
   const [user, SetUser] = useState([]);
   const [isLoading, SetIsLoading] = useState(true);
-  
+  const [open, setOpen] = useState(false); 
 
   useEffect(() => {
     axios.get("http://localhost:5000/get/allUsers")
       .then((result) => {
-        //  console.log(result.length)
-        SetUser(result.data.users);
         SetIsLoading(false)
+        SetUser(result.data);
       });
   },[]);
+
     return (
       <div id="myDiv">
         {isLoading ? (

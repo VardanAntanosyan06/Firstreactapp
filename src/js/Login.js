@@ -5,7 +5,6 @@ import axios from "axios";
 
 import "../css/login.css";
 import Form from "../js/Form";
-import UserAcc from "./user";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -14,33 +13,31 @@ const Login = () => {
   const [status, setStatus] = useState({ success: false, user: null });
 
   useEffect(() => {
-  
     const time = setTimeout(() => {
       axios
         .post("http://localhost:5000/login/", { email, password })
         .then((res) => {
-          console.log(res.data);
           if (res.data.success)
             setStatus({ success: true, user: res.data.condidat });
           else {
             setStatus(false);
           }
-          console.log(status);
         });
     }, 500);
-
     return () => {
       clearTimeout(time);
     };
   }, [password, email]);
 
   return (
-    <div>
-      <UserAcc id={1}/>
+    <div
+      style={{ width: "100px", position: "absolute", top: "38%", left: "40%" }}
+    >
       {status.user ? (
         <div
           style={{
             marginBottom: "20px",
+            width: "350px",
             height: "45px",
             background: "rgba(169,169,169,0.5)",
             boxShadow: "-27px 41px 276px 16px rgba(255,0,0,)",
@@ -72,7 +69,7 @@ const Login = () => {
             placeholder="Password"
             required
             onChange={(e) => setPassword(e.target.value) && setStatus(false)}
-            />
+          />
           <button
             onClick={() => setPasswordShown(!passwordShown)}
             type="button"
@@ -99,7 +96,12 @@ const Login = () => {
           <p>fill password input</p>
         ) : status ? (
           <div className="form-field">
-            <Link to="admin">
+            <Link
+              to={{
+                pathname: status.user.role,
+                search: `?id=${status.user.id}`,
+              }}
+            >
               <button className="btn">Log in</button>
             </Link>
           </div>
