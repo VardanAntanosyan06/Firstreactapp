@@ -5,12 +5,17 @@ import Animation from "./Animation";
 import "../css/getTask.css";
 
 import Plus from "./plustask";
+import UpdateTaskStatus from "./changeTaskStatus";
+
 
 const GetTasks = (props) => {
   const [task, setTask] = useState([]);
   const [loading, setLoading] = useState(true);
   const [changeTaskStatus, SetChangeTaskStatus] = useState(false);
   const [id, setId] = useState(null);
+  const [status, setStatus] = useState(null);
+
+
   useEffect(() => {
     axios
       .get(`http://localhost:5000/get/user?id=${props.id}`)
@@ -18,7 +23,9 @@ const GetTasks = (props) => {
         setTask(result.data.Tasks);
         setLoading(false);
       });
-  }, []);
+  }, [status]);
+
+  console.log(task);
   return (
     <div id="glav">
       {loading ? (
@@ -81,7 +88,7 @@ const GetTasks = (props) => {
               </div>
             ) : null
           )}
-          <Plus open={changeTaskStatus} />
+         <div onClick={()=>setStatus("inProcess")}><Plus open={changeTaskStatus} id={id} /></div>
         </div>
       ) : null}
       {task.length > 0 ? (
@@ -107,7 +114,10 @@ const GetTasks = (props) => {
               </div>
             ) : null
           )}
-          <Plus open={changeTaskStatus} id={id} />
+          <div onClick={()=>setStatus("done")}><Plus open={changeTaskStatus} id={id}/></div>
+          {console.log(status,id)}
+          {status? UpdateTaskStatus(id,status) :null}
+
         </div>
       ) : null}
     </div>
